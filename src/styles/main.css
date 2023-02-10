@@ -1,0 +1,222 @@
+:root {
+  --half-orc: #966e3b;
+  --main-text: #d7c39a;
+  --secondary-text: #646059;
+  --button-color: #837361;
+  --black: #131313;
+  --almost-back: #2d251a;
+  --white: #ffffff;
+
+  --title-size: 1.6rem;
+  --content-size: 1.2rem;
+
+  /* genres id colors */
+
+  --action: radial-gradient(
+    circle,
+    #9d0208,
+    #ad0f08,
+    #bc1b07,
+    #cc2505,
+    #dc2f02
+  );
+  --adventure: radial-gradient(
+    circle,
+    #006400,
+    #006b00,
+    #007200,
+    #007900,
+    #008000
+  );
+  --animation: radial-gradient(
+    circle,
+    #431259,
+    #4b1965,
+    #522172,
+    #59287f,
+    #60308c
+  );
+  --comedy: radial-gradient(
+    circle,
+    #ff7b00,
+    #ff8500,
+    #ff8f00,
+    #ff9900,
+    #ffa200
+  );
+  --crime: radial-gradient(circle, #461220, #601b2b, #7a2535, #962f3f, #b23a48);
+  --documentary: radial-gradient(
+    circle,
+    #003459,
+    #03416a,
+    #074f7b,
+    #0b5d8d,
+    #0d6b9f
+  );
+  --drama: radial-gradient(circle, #c9184a, #d7365b, #e54d6c, #f2617d, #ff758f);
+  --family: radial-gradient(
+    circle,
+    #4361ee,
+    #0082fb,
+    #009dfd,
+    #00b4f8,
+    #4cc9f0
+  );
+  --fantasy: radial-gradient(
+    circle,
+    #139271,
+    #4fa564,
+    #84b654,
+    #bec346,
+    #fcca46
+  );
+  --history: radial-gradient(
+    circle,
+    #3e3d3c,
+    #4b4a49,
+    #595857,
+    #676665,
+    #757574
+  );
+  --horror: radial-gradient(
+    circle,
+    #220901,
+    #3b1108,
+    #58150c,
+    #75180e,
+    #941b0c
+  );
+  --music: radial-gradient(circle, #eeaf61, #f29b5c, #f4875d, #f37263, #ee5d6c);
+  --mystery: radial-gradient(
+    circle,
+    #7209b7,
+    #a200ac,
+    #c6009f,
+    #e10092,
+    #f72585
+  );
+  --romance: radial-gradient(
+    circle,
+    #ffb4a2,
+    #f9ada0,
+    #f3a69e,
+    #ec9f9d,
+    #e5989b
+  );
+  --science-fiction: radial-gradient(
+    circle,
+    #55a630,
+    #69b02a,
+    #7eba21,
+    #94c315,
+    #aacc00
+  );
+  --tv-movie: radial-gradient(
+    circle,
+    #6c757d,
+    #636c73,
+    #5a626a,
+    #525960,
+    #495057
+  );
+  --thriller: radial-gradient(
+    circle,
+    #140152,
+    #160165,
+    #16007a,
+    #14008e,
+    #0d00a4
+  );
+  --war: radial-gradient(circle, #9a0101, #8c1128, #73263b, #573242, #3b383a);
+  --western: radial-gradient(
+    circle,
+    #99704f,
+    #a87f5e,
+    #b88f6d,
+    #c89f7d,
+    #d8af8d
+  );
+  --action-adventure: radial-gradient(
+    circle,
+    #d00000,
+    #d62800,
+    #dc3d00,
+    #e24e00,
+    #e85d04
+  );
+  --kids: radial-gradient(circle, #52b69a, #47b19e, #3eaba1, #38a6a3, #34a0a4);
+  --news: radial-gradient(circle, #605f5e, #636558, #526f60, #31787c, #247ba0);
+  --reality: radial-gradient(
+    circle,
+    #9e0059,
+    #940066,
+    #830076,
+    #690087,
+    #390099
+  );
+  --sci-fi: radial-gradient(
+    circle,
+    #548c2f,
+    #699531,
+    #7f9e33,
+    #94a737,
+    #aab03c
+  );
+  --soap: radial-gradient(circle, #8c07dd, #9110de, #9616e0, #9a1ce1, #9f21e3);
+  --talk: radial-gradient(circle, #017260, #006a66, #006268, #005968, #065064);
+  --war-politics: radial-gradient(
+    circle,
+    #9a0101,
+    #8c1128,
+    #73263b,
+    #573242,
+    #3b383a
+  );
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(
+    to bottom,
+    var(--black) 0%,
+    var(--almost-back) 100%
+  );
+  padding-bottom: 8px;
+  color: var(--main-text);
+  height: 100vh;
+}
+
+html {
+  font-size: 62.5%;
+  color: var(--white);
+  font-family: "Raleway", sans-serif;
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #8373615e;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #8373615e;
+  border-radius: 8px;
+}
+
+

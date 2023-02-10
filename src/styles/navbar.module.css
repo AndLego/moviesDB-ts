@@ -1,0 +1,59 @@
+.Nav {
+  background-color: var(--button-color);
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.Nav a:first-of-type {
+  background-color: var(--black);
+  letter-spacing: 2px;
+  font-weight: 600;
+  color: var(--main-text);
+}
+
+.Nav > div {
+  display: flex;
+}
+
+.Nav a {
+  font-size: 1.6rem;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: 1px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* search bar */
+
+.Nav form {
+  display: flex;
+  line-height: 28px;
+  align-items: center;
+  position: relative;
+  max-width: 280px;
+  margin-right: 4%;
+  width: 400px;
+}
+
+.Nav form svg {
+  position: absolute;
+  left: 1rem;
+  fill: #ffffff;
+  width: 2rem;
+  height: 2rem;
+}
+
+.Nav input[type="search"] {
+  padding: 1rem;
+  padding-left: 3.5rem;
+  border: none;
+  outline: none;
+  background-color: #131313bf;
+  color: var(--white);
+  transition: 0.3s ease;
+  width: 100%;
+}

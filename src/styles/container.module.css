@@ -1,0 +1,125 @@
+/* Trending Movie and TV */
+
+section {
+  padding: 40px 60px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+section p {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  position: relative;
+  text-transform: capitalize;
+}
+section p::after {
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: 4%;
+  background-color: var(--half-orc);
+  border-radius: 4px;
+  left: 0;
+  bottom: -8px;
+}
+
+section article {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding-bottom: 12px;
+}
+
+.Single {
+  position: relative;
+}
+
+section .Single span {
+  position: absolute;
+  background: rgba(19, 19, 19, 0.6);
+  color: var(--main-text);
+  font-size: 2rem;
+  width: 32px;
+  height: 32px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  border-bottom-right-radius: 4px;
+}
+section .Single img {
+  width: 150px;
+  height: 225px;
+  border-radius: 4px;
+}
+
+/* Trending People */
+
+.Person {
+  position: relative;
+}
+
+.Person img {
+  height: 140px;
+  width: 93.3px;
+}
+
+.Person span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  background-color: #131313b5;
+  width: 100%;
+  padding: 8px 2px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+/* Genres */
+
+.Genres {
+  position: relative;
+}
+
+.Genres > div {
+  display: flex;
+  gap: 20px;
+  position: absolute;
+  right: 100px;
+}
+
+.Genres > div button {
+  font-size: 2rem;
+  filter: brightness(0.5);
+  background-color: transparent;
+  letter-spacing: 1px;
+  cursor: pointer;
+  font-weight: 600;
+  border: none;
+  color: var(--main-text);
+}
+
+.Genres > div button.Active {
+  filter: none;
+  border-bottom: 2px solid var(--main-text);
+}
+
+.Genres article h3 {
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--white);
+}
+
+/* Generic container */
+
+.Generic > div img {
+  height: 200px;
+  width: 133.32px;
+}
