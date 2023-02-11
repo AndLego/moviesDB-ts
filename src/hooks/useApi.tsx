@@ -1,14 +1,5 @@
 import React from "react";
-import { Genre, Movie, Person, Tv } from "../types/types";
-
-// type DataProperties = {
-//   [key: string]: any;
-// };
-
-// export type Data =
-//   | (Tv & DataProperties)[]
-//   | (Movie & DataProperties)[]
-//   | (Person & DataProperties)[];
+import { Genre, Movie, Person, Single, Tv } from "../types/types";
 
 interface ApiReturn {
   loading: boolean;
@@ -16,19 +7,18 @@ interface ApiReturn {
   people: Person[];
   genresMovie: Genre[];
   genresTv: Genre[];
+  singleItem: Single;
 }
 
 const KEY = import.meta.env.VITE_API_KEY;
 
-// const url = `https://api.themoviedb.org/3/${what}?api_key=${KEY}`;
-// const url = `https://api.themoviedb.org/3/movie/76341?api_key=${KEY}`;
-
-const useApi = (what: string): ApiReturn => {
+const useApi = (what: string, idSlug?: number): ApiReturn => {
   const [loading, setLoading] = React.useState(true);
   const [catalog, setCatalog] = React.useState<Tv[] | Movie[]>([]);
   const [people, setPeople] = React.useState<Person[]>([]);
   const [genresMovie, setGenresMovie] = React.useState<Genre[]>([]);
   const [genresTv, setGenresTv] = React.useState<Genre[]>([]);
+  const [singleItem, setSingleItem] = React.useState<Single>({} as Single);
 
   let query: string = "";
 
@@ -73,6 +63,16 @@ const useApi = (what: string): ApiReturn => {
       query = "/movie/top_rated";
       break;
 
+    // single querry fot movies,show or person
+
+    case "tv item":
+      query = `/tv/${idSlug}`;
+      break;
+
+    case "movie item":
+      query = `/movie/${idSlug}`;
+      break;
+
     default:
       break;
   }
@@ -85,11 +85,18 @@ const useApi = (what: string): ApiReturn => {
 
     switch (what) {
       case "tv":
-        setCatalog(db.results);
-        setLoading(false);
-        break;
 
       case "movie":
+
+      case "movie - popular":
+
+      case "popular - serie":
+
+      case "upcoming movies":
+
+      case "top shows":
+
+      case "top movies":
         setCatalog(db.results);
         setLoading(false);
         break;
@@ -109,30 +116,30 @@ const useApi = (what: string): ApiReturn => {
         setLoading(false);
         break;
 
-      case "movie - popular":
-        setCatalog(db.results);
-        setLoading(false);
-        break;
+      // single querry fot movies,show or person
 
-      case "popular - serie":
-        setCatalog(db.results);
-        setLoading(false);
-        break;
+      case "tv item":
 
-      case "upcoming movies":
-        setCatalog(db.results);
+      case "movie item":
+        setSingleItem({
+          image: db.backdrop_path,
+          createdBy: db.created_by.map((creator: any) => creator.name),
+          released_date: db.first_air_date,
+          episode_length: db.episode_run_time[0],
+          genres: db.genres,
+          homepage: db.homepage,
+          id: db.id,
+          name: db.name,
+          networks: db.networks,
+          original_name: db.original_name,
+          overview: db.overview,
+          production_companies: db.production_companies.map(
+            (company: any) => company.name
+          ),
+          tagline: db.tagline,
+          vote_average: db.vote_average,
+        });
         setLoading(false);
-        break;
-
-      case "top shows":
-        setCatalog(db.results);
-        setLoading(false);
-        break;
-
-      case "top movies":
-        setCatalog(db.results);
-        setLoading(false);
-        break;
 
       default:
         break;
@@ -147,7 +154,14 @@ const useApi = (what: string): ApiReturn => {
     }
   }, []);
 
-  return { loading, catalog, people, genresMovie, genresTv };
+  return {
+    loading,
+    catalog,
+    people,
+    genresMovie,
+    genresTv,
+    singleItem,
+  };
 };
 
 export default useApi;

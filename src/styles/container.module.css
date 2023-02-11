@@ -34,6 +34,7 @@ section article {
 
 .Single {
   position: relative;
+  cursor: pointer;
 }
 
 section .Single span {

@@ -49,3 +49,21 @@ export interface Person {
     popularity: number,
     profile_path: string,
 }
+
+export interface Single {
+    createdBy: string[],
+    episode_length: number,
+    genres: Genre[],
+    homepage: string,
+    id: number,
+    image: string,
+    name: string,
+    networks: any[],
+    original_name: string,
+    overview: string,
+    production_companies: string[],
+    released_date: string,
+    tagline: string,
+    vote_average: number
+
+}

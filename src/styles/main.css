@@ -180,7 +180,7 @@
   box-sizing: border-box;
 }
 
-body {
+main {
   background-image: linear-gradient(
     to bottom,
     var(--black) 0%,
@@ -188,7 +188,6 @@ body {
   );
   padding-bottom: 8px;
   color: var(--main-text);
-  height: 100vh;
 }
 
 html {
@@ -218,5 +217,3 @@ html {
   background-color: #8373615e;
   border-radius: 8px;
 }
-
-

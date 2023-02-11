@@ -8,7 +8,7 @@ const Home = () => {
   const [genreType, setGenreType] = React.useState(true);
 
   return (
-    <>
+    <main>
       <TrendingList media_type={"tv"} />
 
       <TrendingList media_type={"movie"} />
@@ -20,7 +20,7 @@ const Home = () => {
       {genericContainers.map((catalog, index) => {
         return <GenericContainer key={index} media_type={catalog} />;
       })}
-    </>
+    </main>
   );
 };
 
