@@ -8,7 +8,7 @@ const GenericContainer = ({ media_type }: { media_type: string }) => {
 
   return (
     <section>
-      <p>{media_type}</p>
+      <p className={styles.titles}>{media_type}</p>
       <article className={styles.Generic}>
         {catalog.map((item) => {
           return (

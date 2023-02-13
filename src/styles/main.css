@@ -7,6 +7,12 @@
   --almost-back: #2d251a;
   --white: #ffffff;
 
+  --main-gradient: linear-gradient(
+    to bottom,
+    var(--black) 0%,
+    var(--almost-back) 100%
+  );
+
   --title-size: 1.6rem;
   --content-size: 1.2rem;
 
@@ -181,11 +187,7 @@
 }
 
 main {
-  background-image: linear-gradient(
-    to bottom,
-    var(--black) 0%,
-    var(--almost-back) 100%
-  );
+  background-image: var(--main-gradient);
   padding-bottom: 8px;
   color: var(--main-text);
 }

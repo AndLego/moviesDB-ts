@@ -21,7 +21,6 @@ const TrendingList = ({ media_type }: { media_type: string }) => {
 
   return (
     <section>
-      <p>Trending {media_type}</p>
       <article>
         {catalog?.map((single: Tv | Movie, index: number) => {
           return (

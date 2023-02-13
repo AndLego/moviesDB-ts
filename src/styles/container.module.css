@@ -7,14 +7,14 @@ section {
   gap: 28px;
 }
 
-section p {
+.titles {
   font-size: 2rem;
   font-weight: 600;
   letter-spacing: 2px;
   position: relative;
   text-transform: capitalize;
 }
-section p::after {
+.titles::after {
   content: "";
   position: absolute;
   height: 4px;

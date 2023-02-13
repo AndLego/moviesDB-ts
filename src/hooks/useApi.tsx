@@ -73,12 +73,21 @@ const useApi = (what: string, idSlug?: number): ApiReturn => {
       query = `/movie/${idSlug}`;
       break;
 
+    case "tv-cast":
+      query = `/tv/${idSlug}/credits`;
+      break;
+
+    case "movie-cast":
+      query = `/movie/${idSlug}/credits`;
+      break;
+
     default:
       break;
   }
 
   const fetchData = async () => {
     let url = `https://api.themoviedb.org/3${query}?api_key=${KEY}`;
+console.log(query);
 
     const response = await fetch(url);
     const db = await response.json();
@@ -102,7 +111,15 @@ const useApi = (what: string, idSlug?: number): ApiReturn => {
         break;
 
       case "people":
-        setPeople(db.results);
+        setPeople(
+          db.results.map((item: Person) => ({
+            id: item.id,
+            known_for: item.known_for,
+            name: item.name,
+            profile_path: item.profile_path,
+          }))
+        );
+
         setLoading(false);
         break;
 
@@ -122,7 +139,8 @@ const useApi = (what: string, idSlug?: number): ApiReturn => {
 
       case "movie item":
         setSingleItem({
-          image: db.backdrop_path,
+          background_image: db.backdrop_path,
+          poster_image: db.poster_path,
           createdBy: db.created_by.map((creator: any) => creator.name),
           released_date: db.first_air_date,
           episode_length: db.episode_run_time[0],
@@ -140,6 +158,19 @@ const useApi = (what: string, idSlug?: number): ApiReturn => {
           vote_average: db.vote_average,
         });
         setLoading(false);
+
+      case "tv-cast":
+
+      case "movie-cast":
+        setPeople(
+          db.cast.map((item: Person) => ({
+            id: item.id,
+            known_for: item.known_for,
+            name: item.name,
+            profile_path: item.profile_path,
+          }))
+        );
+        break;
 
       default:
         break;

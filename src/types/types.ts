@@ -40,13 +40,9 @@ export interface Movie {
 }
 
 export interface Person {
-    adult: false,
-    gender: number,
     id: number,
-    known_for: number[],
-    known_for_department: string,
+    known_for: any[],
     name: string,
-    popularity: number,
     profile_path: string,
 }
 
@@ -56,7 +52,8 @@ export interface Single {
     genres: Genre[],
     homepage: string,
     id: number,
-    image: string,
+    background_image: string,
+    poster_image: string,
     name: string,
     networks: any[],
     original_name: string,

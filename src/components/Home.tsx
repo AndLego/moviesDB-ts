@@ -3,17 +3,19 @@ import GenericContainer from "./containers/GenericContainer";
 import GenresList from "./containers/GenresList";
 import PeopleList from "./containers/PeopleList";
 import TrendingList from "./containers/TrendingList";
+import styles from "../styles/container.module.css";
 
 const Home = () => {
-  const [genreType, setGenreType] = React.useState(true);
-
   return (
     <main>
+      <h1 className={styles.titles}>Trending Tv</h1>
       <TrendingList media_type={"tv"} />
 
+      <h1 className={styles.titles}>Trending Movie</h1>
       <TrendingList media_type={"movie"} />
 
-      <PeopleList media_type={"people"} />
+      <h1 className={styles.titles}>Trending People</h1>
+      <PeopleList mediaType={"trend"} />
 
       <GenresList />
 

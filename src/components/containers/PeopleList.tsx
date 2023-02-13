@@ -3,14 +3,38 @@ import styles from "../../styles/container.module.css";
 import useApi from "../../hooks/useApi";
 import { Person } from "../../types/types";
 
-const PeopleList = ({ media_type }: { media_type: string }) => {
-  const { loading, people } = useApi(media_type);
+interface PeopleProps {
+  mediaType: string;
+  slug?: number;
+}
+
+const PeopleList = ({ mediaType, slug }: PeopleProps) => {
+  const [type, setType] = React.useState("");
+
+  const peopleCall = () => {
+    if (mediaType === "trend") {
+      setType("people");
+    }
+    if (mediaType === "tv") {
+      setType("tv-cast");
+    }
+    if (mediaType === "movie") {
+      setType("movie-cast");
+    }
+  };
+
+  React.useEffect(() => {
+    peopleCall();
+  }, []);
+
+  const { loading, people } = useApi(type, Number(slug));
+
+  console.log("peoplelist", people);
 
   if (loading) return <p>...loading</p>;
 
   return (
     <section>
-      <p>Trending {media_type}</p>
       <article>
         {people?.map((single: Person, index: number) => {
           return (
@@ -18,8 +42,8 @@ const PeopleList = ({ media_type }: { media_type: string }) => {
               <img
                 src={`https://image.tmdb.org/t/p/w342${single.profile_path}`}
                 alt=""
-                />
-                <span>{single.name}</span>
+              />
+              <span>{single.name}</span>
             </div>
           );
         })}

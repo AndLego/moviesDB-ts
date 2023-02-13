@@ -17,7 +17,7 @@ const GenresList = () => {
 
   return (
     <section className={styles.Genres}>
-      <p>Genres</p>
+      <p className={styles.titles}>Genres</p>
       <div>
         <button className={active ? "" : styles.Active} onClick={handleType}>
           Movie
