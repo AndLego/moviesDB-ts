@@ -6,8 +6,8 @@ import { colorMapMovie, colorMapTv } from "../../utils/colorMaps";
 
 const GenresList = () => {
   const [active, setActive] = React.useState(false);
-  const { loading, genresMovie } = useApi("genreMovie");
-  const { genresTv } = useApi("genreTv");
+  const { loading, genresMovie } = useApi("/genre/movie/list");
+  const { genresTv } = useApi("/genre/tv/list");
 
   const handleType = () => {
     setActive(!active);

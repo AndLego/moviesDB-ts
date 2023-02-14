@@ -7,6 +7,15 @@ section {
   gap: 28px;
 }
 
+.titles_trending {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  position: relative;
+  text-transform: capitalize;
+  padding: 20px 0 0 60px;
+}
+
 .titles {
   font-size: 2rem;
   font-weight: 600;
@@ -22,6 +31,17 @@ section {
   background-color: var(--half-orc);
   border-radius: 4px;
   left: 0;
+  bottom: -8px;
+}
+
+.titles_trending::after {
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: 4%;
+  background-color: var(--half-orc);
+  border-radius: 4px;
+  left: 60px;
   bottom: -8px;
 }
 
@@ -116,6 +136,8 @@ section .Single img {
   border-radius: 4px;
   cursor: pointer;
   color: var(--white);
+  width: 102px;
+  height: 57px;
 }
 
 /* Generic container */

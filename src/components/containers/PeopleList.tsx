@@ -4,34 +4,15 @@ import useApi from "../../hooks/useApi";
 import { Person } from "../../types/types";
 
 interface PeopleProps {
-  mediaType: string;
+  media_type: string;
   slug?: number;
 }
 
-const PeopleList = ({ mediaType, slug }: PeopleProps) => {
-  const [type, setType] = React.useState("");
+const PeopleList = ({ media_type, slug }: PeopleProps) => {
+  const { loading, people } = useApi(media_type, slug);
+  console.log("media =====>", media_type);
 
-  const peopleCall = () => {
-    if (mediaType === "trend") {
-      setType("people");
-    }
-    if (mediaType === "tv") {
-      setType("tv-cast");
-    }
-    if (mediaType === "movie") {
-      setType("movie-cast");
-    }
-  };
-
-  React.useEffect(() => {
-    peopleCall();
-  }, []);
-
-  const { loading, people } = useApi(type, Number(slug));
-
-  console.log("peoplelist", people);
-
-  if (loading) return <p>...loading</p>;
+  if (loading) return <p>...loading...</p>;
 
   return (
     <section>

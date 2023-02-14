@@ -20,160 +20,176 @@ const useApi = (what: string, idSlug?: number): ApiReturn => {
   const [genresTv, setGenresTv] = React.useState<Genre[]>([]);
   const [singleItem, setSingleItem] = React.useState<Single>({} as Single);
 
-  let query: string = "";
+  //   switch (what) {
+  //     case "tv":
 
-  switch (what) {
-    case "tv":
-      query = "/trending/tv/day";
-      break;
+  //     case "movie":
 
-    case "movie":
-      query = "/trending/movie/day";
-      break;
+  //     case "movie - popular":
 
-    case "people":
-      query = "/person/popular";
-      break;
+  //     case "popular - serie":
 
-    case "genreMovie":
-      query = "/genre/movie/list";
-      break;
+  //     case "upcoming movies":
 
-    case "genreTv":
-      query = "/genre/tv/list";
-      break;
+  //     case "top shows":
 
-    case "movie - popular":
-      query = "/movie/popular";
-      break;
+  //     case "top movies":
+  //       setCatalog(db.results);
+  //       setLoading(false);
+  //       break;
 
-    case "popular - serie":
-      query = "/tv/popular";
-      break;
+  //     case "people":
+  //       setPeople(
+  //         db.results.map((item: Person) => ({
+  //           id: item.id,
+  //           known_for: item.known_for,
+  //           name: item.name,
+  //           profile_path: item.profile_path,
+  //         }))
+  //       );
 
-    case "upcoming movies":
-      query = "/movie/upcoming";
-      break;
+  //       setLoading(false);
+  //       break;
 
-    case "top shows":
-      query = "/tv/top_rated";
-      break;
+  //     case "genreMovie":
+  //       setGenresMovie(db.genres);
+  //       setLoading(false);
+  //       break;
 
-    case "top movies":
-      query = "/movie/top_rated";
-      break;
+  //     case "genreTv":
+  //       setGenresTv(db.genres);
+  //       setLoading(false);
+  //       break;
 
-    // single querry fot movies,show or person
+  //     // single querry fot movies,show or person
 
-    case "tv item":
-      query = `/tv/${idSlug}`;
-      break;
+  //     case "tv item":
 
-    case "movie item":
-      query = `/movie/${idSlug}`;
-      break;
+  //     case "movie item":
+  //       setSingleItem({
+  //         background_image: db.backdrop_path,
+  //         poster_image: db.poster_path,
+  //         createdBy: db.created_by.map((creator: any) => creator.name),
+  //         released_date: db.first_air_date,
+  //         episode_length: db.episode_run_time[0],
+  //         genres: db.genres,
+  //         homepage: db.homepage,
+  //         id: db.id,
+  //         name: db.name,
+  //         networks: db.networks,
+  //         original_name: db.original_name,
+  //         overview: db.overview,
+  //         production_companies: db.production_companies.map(
+  //           (company: any) => company.name
+  //         ),
+  //         tagline: db.tagline,
+  //         vote_average: db.vote_average,
+  //       });
+  //       setLoading(false);
 
-    case "tv-cast":
-      query = `/tv/${idSlug}/credits`;
-      break;
+  //     case "tv-cast":
 
-    case "movie-cast":
-      query = `/movie/${idSlug}/credits`;
-      break;
+  //     case "movie-cast":
+  //       setPeople(
+  //         db.cast.map((item: Person) => ({
+  //           id: item.id,
+  //           known_for: item.known_for,
+  //           name: item.name,
+  //           profile_path: item.profile_path,
+  //         }))
+  //       );
+  //       break;
 
-    default:
-      break;
-  }
+  //     default:
+  //       break;
+  //   }
+  // };
+
+  let query: string = what;
 
   const fetchData = async () => {
     let url = `https://api.themoviedb.org/3${query}?api_key=${KEY}`;
-console.log(query);
-
     const response = await fetch(url);
     const db = await response.json();
 
-    switch (what) {
-      case "tv":
+    console.log("query =========>", query);
+    console.log("comparacion ===>", `/movie/${idSlug}/credits`);
 
-      case "movie":
+    if (query === "/trending/person/day") {
+      setPeople(
+        db.results.map((item: Person) => ({
+          id: item.id,
+          known_for: item.known_for,
+          name: item.name,
+          profile_path: item.profile_path,
+        }))
+      );
+      setLoading(false);
+      return;
+    }
 
-      case "movie - popular":
+    if (query === "/genre/movie/list") {
+      setGenresMovie(db.genres);
+      setLoading(false);
+      return;
+    }
 
-      case "popular - serie":
+    if (query === "/genre/tv/list") {
+      setGenresTv(db.genres);
+      setLoading(false);
+      return;
+    }
 
-      case "upcoming movies":
+    if (query === `/tv/${idSlug}` || query === `/movie/${idSlug}`) {
+      setSingleItem({
+        background_image: db.backdrop_path,
+        poster_image: db.poster_path,
+        released_date: db.first_air_date || db.release_date,
+        episode_length: db.episode_run_time?.[0] || [],
+        genres: db.genres,
+        homepage: db.homepage,
+        id: db.id,
+        name: db.name || db.title,
+        networks: db.networks || [],
+        original_name: db.original_name || db.original_title,
+        overview: db.overview,
+        production_companies: db.production_companies.map(
+          (company: any) => company.name
+        ),
+        tagline: db.tagline,
+        vote_average: db.vote_average,
+      });
+      setLoading(false);
 
-      case "top shows":
+      return;
+    }
 
-      case "top movies":
-        setCatalog(db.results);
-        setLoading(false);
-        break;
+    if (
+      query === `/tv/${idSlug}/credits` ||
+      query === `/movie/${idSlug}/credits`
+    ) {
+      console.log("entre");
 
-      case "people":
-        setPeople(
-          db.results.map((item: Person) => ({
-            id: item.id,
-            known_for: item.known_for,
-            name: item.name,
-            profile_path: item.profile_path,
-          }))
-        );
+      console.log(url);
+      console.log(db);
 
-        setLoading(false);
-        break;
+      setPeople(
+        db.cast.slice(0, 20).map((item: Person) => ({
+          id: item.id,
+          known_for: item.known_for,
+          name: item.name,
+          profile_path: item.profile_path,
+        }))
+      );
+      setLoading(false);
 
-      case "genreMovie":
-        setGenresMovie(db.genres);
-        setLoading(false);
-        break;
+      return;
+    }
 
-      case "genreTv":
-        setGenresTv(db.genres);
-        setLoading(false);
-        break;
-
-      // single querry fot movies,show or person
-
-      case "tv item":
-
-      case "movie item":
-        setSingleItem({
-          background_image: db.backdrop_path,
-          poster_image: db.poster_path,
-          createdBy: db.created_by.map((creator: any) => creator.name),
-          released_date: db.first_air_date,
-          episode_length: db.episode_run_time[0],
-          genres: db.genres,
-          homepage: db.homepage,
-          id: db.id,
-          name: db.name,
-          networks: db.networks,
-          original_name: db.original_name,
-          overview: db.overview,
-          production_companies: db.production_companies.map(
-            (company: any) => company.name
-          ),
-          tagline: db.tagline,
-          vote_average: db.vote_average,
-        });
-        setLoading(false);
-
-      case "tv-cast":
-
-      case "movie-cast":
-        setPeople(
-          db.cast.map((item: Person) => ({
-            id: item.id,
-            known_for: item.known_for,
-            name: item.name,
-            profile_path: item.profile_path,
-          }))
-        );
-        break;
-
-      default:
-        break;
+    if (query) {
+      setCatalog(db.results);
+      setLoading(false);
+      return;
     }
   };
 
@@ -183,7 +199,7 @@ console.log(query);
     } catch (err) {
       console.log(err);
     }
-  }, []);
+  }, [query]);
 
   return {
     loading,

@@ -47,8 +47,7 @@ export interface Person {
 }
 
 export interface Single {
-    createdBy: string[],
-    episode_length: number,
+    episode_length?: number,
     genres: Genre[],
     homepage: string,
     id: number,

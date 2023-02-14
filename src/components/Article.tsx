@@ -10,8 +10,10 @@ const Article = () => {
 
   const mediaType = location.pathname.split("/")[1];
 
-  const { loading, singleItem } = useApi(`${mediaType} item`, Number(slug));
- 
+  const { loading, singleItem } = useApi(
+    mediaType === "tv" ? `/tv/${slug}` : `/movie/${slug}`,
+    Number(slug)
+  );
 
   const backgroundStyle = {
     backgroundImage: `url(https://image.tmdb.org/t/p/w1280${singleItem.background_image})`,
@@ -35,24 +37,24 @@ const Article = () => {
             <span>{singleItem.tagline}</span>
             <span>{singleItem.released_date}</span>
             <div>
-              {singleItem.genres.map((gen) => {
-                return <span>{gen.name}</span>;
+              {singleItem.genres.map((gen, index) => {
+                return <span key={index}>{gen.name}</span>;
               })}
             </div>
             <p>{singleItem.overview}</p>
 
             <p>Cast</p>
 
-            <PeopleList mediaType={mediaType} slug={slug} />
+            <PeopleList
+              media_type={
+                mediaType === "tv"
+                  ? `/tv/${slug}/credits`
+                  : `/movie/${slug}/credits`
+              }
+              slug={slug}
+            />
 
-            <article className={styles.info}>
-              <span> Created By</span>
-              <div>
-                {singleItem.createdBy.map((person, index) => {
-                  return <p key={index}>{person}</p>;
-                })}
-              </div>
-            </article>
+            <article className={styles.info}></article>
             <article>
               <div>{singleItem.vote_average}</div>
               <div>{`${singleItem.episode_length} m`}</div>
