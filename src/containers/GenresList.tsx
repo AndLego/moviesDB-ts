@@ -1,8 +1,9 @@
 import React from "react";
-import useApi from "../../hooks/useApi";
-import styles from "../../styles/container.module.css";
-import "../../styles/main.css";
-import { colorMapMovie, colorMapTv } from "../../utils/colorMaps";
+import Genres from "../components/Genres";
+import useApi from "../hooks/useApi";
+import styles from "../styles/genres.module.css";
+import "../styles/main.css";
+import { colorMapMovie, colorMapTv } from "../utils/colorMaps";
 
 const GenresList = () => {
   const [active, setActive] = React.useState(false);
@@ -26,23 +27,12 @@ const GenresList = () => {
           Tv
         </button>
       </div>
-      <article>
-        {!active
-          ? genresMovie.map((gen) => {
-              return (
-                <h3 key={gen.id} style={{ background: colorMapMovie[gen.id] }}>
-                  {gen.name}
-                </h3>
-              );
-            })
-          : genresTv.map((gen) => {
-              return (
-                <h3 key={gen.id} style={{ background: colorMapTv[gen.id] }}>
-                  {gen.name}
-                </h3>
-              );
-            })}
-      </article>
+
+      {!active ? (
+        <Genres genresArray={genresMovie} colorMap={colorMapMovie} />
+      ) : (
+        <Genres genresArray={genresTv} colorMap={colorMapTv} />
+      )}
     </section>
   );
 };

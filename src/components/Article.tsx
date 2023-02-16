@@ -2,7 +2,9 @@ import React from "react";
 import { useLocation, useParams } from "react-router-dom";
 import useApi from "../hooks/useApi";
 import styles from "../styles/article.module.css";
-import PeopleList from "./containers/PeopleList";
+import PeopleList from "../containers/PeopleList";
+import Genres from "./Genres";
+import { colorMapMovie, colorMapTv } from "../utils/colorMaps";
 
 const Article = () => {
   const { slug } = useParams();
@@ -36,11 +38,12 @@ const Article = () => {
             <h1>{singleItem.name}</h1>
             <span>{singleItem.tagline}</span>
             <span>{singleItem.released_date}</span>
-            <div>
-              {singleItem.genres.map((gen, index) => {
-                return <span key={index}>{gen.name}</span>;
-              })}
-            </div>
+
+            <Genres
+              genresArray={singleItem.genres}
+              colorMap={mediaType === "tv" ? colorMapTv : colorMapMovie}
+            />
+
             <p>{singleItem.overview}</p>
 
             <p>Cast</p>
@@ -51,7 +54,7 @@ const Article = () => {
                   ? `/tv/${slug}/credits`
                   : `/movie/${slug}/credits`
               }
-              slug={slug}
+              slug={Number(slug)}
             />
 
             <article className={styles.info}></article>

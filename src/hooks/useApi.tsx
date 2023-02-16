@@ -112,9 +112,6 @@ const useApi = (what: string, idSlug?: number): ApiReturn => {
     const response = await fetch(url);
     const db = await response.json();
 
-    console.log("query =========>", query);
-    console.log("comparacion ===>", `/movie/${idSlug}/credits`);
-
     if (query === "/trending/person/day") {
       setPeople(
         db.results.map((item: Person) => ({
@@ -168,11 +165,6 @@ const useApi = (what: string, idSlug?: number): ApiReturn => {
       query === `/tv/${idSlug}/credits` ||
       query === `/movie/${idSlug}/credits`
     ) {
-      console.log("entre");
-
-      console.log(url);
-      console.log(db);
-
       setPeople(
         db.cast.slice(0, 20).map((item: Person) => ({
           id: item.id,

@@ -1,7 +1,7 @@
 import React from "react";
-import useApi from "../../hooks/useApi.jsx";
-import { Movie, Tv } from "../../types/types.js";
-import styles from "../../styles/container.module.css";
+import useApi from "../hooks/useApi.js";
+import { Movie, Tv } from "../types/types.js";
+import styles from "../styles/container.module.css";
 import { useNavigate } from "react-router-dom";
 
 const TrendingList = ({ media_type }: { media_type: string }) => {

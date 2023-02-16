@@ -1,8 +1,8 @@
 import React from "react";
-import GenericContainer from "./containers/GenericContainer";
-import GenresList from "./containers/GenresList";
-import PeopleList from "./containers/PeopleList";
-import TrendingList from "./containers/TrendingList";
+import GenericContainer from "../containers/GenericContainer";
+import GenresList from "../containers/GenresList";
+import PeopleList from "../containers/PeopleList";
+import TrendingList from "../containers/TrendingList";
 import styles from "../styles/container.module.css";
 
 const Home = () => {

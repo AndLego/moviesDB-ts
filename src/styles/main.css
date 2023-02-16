@@ -187,8 +187,7 @@
 }
 
 main {
-  background-image: var(--main-gradient);
-  padding-bottom: 8px;
+  padding: 40px 60px 0;
   color: var(--main-text);
 }
 
@@ -196,6 +195,7 @@ html {
   font-size: 62.5%;
   color: var(--white);
   font-family: "Raleway", sans-serif;
+  background: var(--main-gradient);
 }
 
 /* ===== Scrollbar CSS ===== */

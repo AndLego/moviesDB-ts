@@ -1,7 +1,6 @@
 /* Trending Movie and TV */
 
 section {
-  padding: 40px 60px 0;
   display: flex;
   flex-direction: column;
   gap: 28px;
@@ -13,7 +12,7 @@ section {
   letter-spacing: 2px;
   position: relative;
   text-transform: capitalize;
-  padding: 20px 0 0 60px;
+  padding: 20px 0 30px;
 }
 
 .titles {
@@ -22,6 +21,7 @@ section {
   letter-spacing: 2px;
   position: relative;
   text-transform: capitalize;
+  margin-top: 12px;
 }
 .titles::after {
   content: "";
@@ -41,8 +41,8 @@ section {
   width: 4%;
   background-color: var(--half-orc);
   border-radius: 4px;
-  left: 60px;
-  bottom: -8px;
+  left: 0;
+  bottom: 24px;
 }
 
 section article {
@@ -50,6 +50,11 @@ section article {
   overflow-x: auto;
   gap: 20px;
   padding-bottom: 12px;
+}
+
+section.PeopleContainer article {
+  display: flex;
+  flex-direction: row;
 }
 
 .Single {
@@ -84,6 +89,13 @@ section .Single img {
 .Person img {
   height: 140px;
   width: 93.3px;
+  border-radius: 4px;
+}
+
+.Person svg {
+  width: 100px;
+  height: 50px;
+  margin-top: 16px;
 }
 
 .Person span {
@@ -98,51 +110,10 @@ section .Single img {
   text-align: center;
 }
 
-/* Genres */
-
-.Genres {
-  position: relative;
-}
-
-.Genres > div {
-  display: flex;
-  gap: 20px;
-  position: absolute;
-  right: 100px;
-}
-
-.Genres > div button {
-  font-size: 2rem;
-  filter: brightness(0.5);
-  background-color: transparent;
-  letter-spacing: 1px;
-  cursor: pointer;
-  font-weight: 600;
-  border: none;
-  color: var(--main-text);
-}
-
-.Genres > div button.Active {
-  filter: none;
-  border-bottom: 2px solid var(--main-text);
-}
-
-.Genres article h3 {
-  padding: 8px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  letter-spacing: 1px;
-  border-radius: 4px;
-  cursor: pointer;
-  color: var(--white);
-  width: 102px;
-  height: 57px;
-}
-
 /* Generic container */
 
 .Generic > div img {
   height: 200px;
   width: 133.32px;
+  border-radius: 4px;
 }

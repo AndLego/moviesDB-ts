@@ -1,6 +1,6 @@
 import React from "react";
-import useApi from "../../hooks/useApi";
-import styles from "../../styles/container.module.css";
+import useApi from "../hooks/useApi";
+import styles from "../styles/container.module.css";
 
 interface GenericProps {
   media_type: string;
