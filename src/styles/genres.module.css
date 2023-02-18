@@ -2,13 +2,15 @@
 
 .Genres {
   position: relative;
+  margin: 20px 0;
 }
 
 .Genres > div {
   display: flex;
   gap: 20px;
   position: absolute;
-  right: 100px;
+  right: 16px;
+  top: 12px;
 }
 
 .Genres > div button {
@@ -35,13 +37,36 @@
   border-radius: 4px;
   cursor: pointer;
   color: var(--white);
-  min-width: 120px;
+  min-width: 100px;
   height: 48px;
   text-align: center;
   border: none;
+  font-size: 12px;
+  padding: 0 4px;
+  contain: inline-size;
 }
 
 #GenreContainer {
   display: flex;
   flex-direction: row;
+}
+
+/* title */
+.titles {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  position: relative;
+  text-transform: capitalize;
+  margin-top: 12px;
+}
+.titles::after {
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: 4%;
+  background-color: var(--half-orc);
+  border-radius: 4px;
+  left: 0;
+  bottom: -8px;
 }

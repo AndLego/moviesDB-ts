@@ -110,7 +110,7 @@ const useApi = (what: string, idSlug?: number): ApiReturn => {
   const fetchData = async () => {
     let url = `https://api.themoviedb.org/3${query}?api_key=${KEY}`;
     const response = await fetch(url);
-    const db = await response.json();
+    const db = await response.json();    
 
     if (query === "/trending/person/day") {
       setPeople(
@@ -142,7 +142,7 @@ const useApi = (what: string, idSlug?: number): ApiReturn => {
         background_image: db.backdrop_path,
         poster_image: db.poster_path,
         released_date: db.first_air_date || db.release_date,
-        episode_length: db.episode_run_time?.[0] || [],
+        episode_length: db.episode_run_time?.[0] || db.runtime,
         genres: db.genres,
         homepage: db.homepage,
         id: db.id,

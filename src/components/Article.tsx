@@ -36,17 +36,16 @@ const Article = () => {
           />
           <article>
             <h1>{singleItem.name}</h1>
-            <span>{singleItem.tagline}</span>
-            <span>{singleItem.released_date}</span>
+            <span className={styles.tagline}>{singleItem.tagline}</span>
+
+            <p>{singleItem.overview}</p>
 
             <Genres
               genresArray={singleItem.genres}
               colorMap={mediaType === "tv" ? colorMapTv : colorMapMovie}
             />
 
-            <p>{singleItem.overview}</p>
-
-            <p>Cast</p>
+            <h2>Cast</h2>
 
             <PeopleList
               media_type={
@@ -57,29 +56,25 @@ const Article = () => {
               slug={Number(slug)}
             />
 
-            <article className={styles.info}></article>
-            <article>
-              <div>{singleItem.vote_average}</div>
+            <h2>Technical Information</h2>
+
+            <article className={styles.info}>
+              <div>Vote Average</div>
+              <div>{singleItem.vote_average.toFixed(2)} ⭐</div>
+              <div>Runtime</div>
               <div>{`${singleItem.episode_length} m`}</div>
+              <div>original title</div>
+              <div>{singleItem.original_name}</div>
             </article>
-            <article>
-              <h3>Information</h3>
-              <div>
-                <h4>original title</h4>
-                <p>{singleItem.original_name}</p>
-              </div>
-              <div>
-                <h4>Production Companies</h4>
-                {singleItem.production_companies.map((company, index) => {
-                  return <p key={index}>{company}</p>;
-                })}
-              </div>
+
+            <h2>Production Companies</h2>
+
+            <article className={styles.info}>
+              {singleItem.production_companies.map((company, index) => {
+                return <div key={index}>{company}</div>;
+              })}
             </article>
-            <article>
-              <div>genero1</div>
-              <div>genero2</div>
-              <div>genero3</div>
-            </article>
+
             <article>similar</article>
             <article>recomendations</article>
           </article>
